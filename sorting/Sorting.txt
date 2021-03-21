@@ -1,0 +1,16 @@
+*selection sort*
+    phle minimum find kr fir usko aage chipka de. 
+    repeat;;;
+
+*bubble sort*
+    line me ja element ko uske next vale se check kr.
+    agar bda aaye to swap kr.
+    esse tujhe last me jo sbse bda hoga vo milega..
+    repear;;;
+
+*insertion sort*
+    do me divide kr sorted and unsorted 
+    intially sorted me kuch nhi hoga sare unsorted me honge
+    unsorted me se ek utha usko sorted me shi position pe daal jaise tera maannn ho vaise;
+    repeat;;;
+
