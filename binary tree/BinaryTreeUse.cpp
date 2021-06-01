@@ -179,10 +179,10 @@ int main(){
     // printTreeLevelWise(root);
     // cout << "total nodes: " << countNodes(root);
     // inorder(root);
-    cout << "diameter " << diameterOfTree(root) << endl;
-    cout << "Height" << heightDiameter(root).first<<endl;
-    cout << "Diameter" << heightDiameter(root).second;
+    // cout << "diameter " << diameterOfTree(root) << endl;
+    // cout << "Height" << heightDiameter(root).first<<endl;
+    // cout << "Diameter" << heightDiameter(root).second;
     
-    delete (root);
+    // delete (root);
     // printTree(root);
 }
