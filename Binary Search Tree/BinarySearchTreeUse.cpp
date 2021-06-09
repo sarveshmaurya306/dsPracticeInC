@@ -96,6 +96,66 @@ BinarySearchTreeNode<int> * searchNode(BinarySearchTreeNode<int> *root, int sear
     return res;
 }
 
+
+class IsBSTReturn{
+    public:
+        bool isBST;
+        int minimum;
+        int maximum;
+};
+
+IsBSTReturn isBST2(BinarySearchTreeNode<int> * root){
+    if(root==NULL){
+        IsBSTReturn output;
+        output.isBST = true;
+        output.minimum = INT_MAX;
+        output.maximum = INT_MIN;
+        return output;
+    }
+    IsBSTReturn leftoutput = isBST2(root->left);
+    IsBSTReturn rightoutput = isBST2(root->right);
+    int minimum = min(root->data, min(leftoutput.minimum, rightoutput.minimum));
+    int maximum = max(root->data, max(leftoutput.maximum, rightoutput.maximum));
+
+    bool isBSTFinal = (root->data > leftoutput.maximum) && (root->data <= rightoutput.minimum) && leftoutput.isBST && rightoutput.isBST;
+
+    IsBSTReturn output;
+    output.minimum = minimum;
+    output.maximum = maximum;
+    output.isBST = isBSTFinal;
+
+    return output;
+    //O(N)
+}
+
+/* 
+int
+maximum(BinarySearchTreeNode<int> *root)
+{
+    if(root==NULL){
+        return INT_MIN;
+    }
+    return max(root->data, max(maximum(root->left), maximum(root->right)));
+}
+int minimum(BinarySearchTreeNode<int> * root){
+    if(root==NULL){
+        return INT_MAX;
+    }
+    return min(root->data, min(minimum(root->left), minimum(root->right)));
+}
+
+bool isBST(BinarySearchTreeNode<int> * root){
+    if(root==NULL){
+        return true;
+    }
+
+    int leftMax = maximum(root->left);
+    int rightMin = minimum(root->left);
+
+    bool output = (root->data > leftMax) && (root->data <= rightMin) && isBST(root->left) && isBST(root->right);
+    return output;
+}
+ */
 int main() {
     // 5 3 2 -1 -1 4 -1 -1 7 6 -1 -1 8 -1 -1
     BinarySearchTreeNode<int> *root = takeInput();
@@ -114,4 +174,10 @@ int main() {
     }
      */
     //1:15
+    cout << endl;
+    // 4 2 1 -1 -1 13 -1 -1 6 5 -1 -1 7 -1 -1
+    printTreeLevelWise(root);
+    cout << endl;
+    IsBSTReturn opt = isBST2(root);
+    cout << opt.isBST << endl;
 }
