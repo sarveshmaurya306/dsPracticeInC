@@ -128,41 +128,74 @@ IsBSTReturn isBST2(BinarySearchTreeNode<int> * root){
     //O(N)
 }
 
-/* 
-int
-maximum(BinarySearchTreeNode<int> *root)
-{
-    if(root==NULL){
-        return INT_MIN;
-    }
-    return max(root->data, max(maximum(root->left), maximum(root->right)));
-}
-int minimum(BinarySearchTreeNode<int> * root){
-    if(root==NULL){
-        return INT_MAX;
-    }
-    return min(root->data, min(minimum(root->left), minimum(root->right)));
-}
-
-bool isBST(BinarySearchTreeNode<int> * root){
+bool isBST3(BinarySearchTreeNode<int> * root, int min=INT_MIN, int max=INT_MAX){
     if(root==NULL){
         return true;
     }
-
-    int leftMax = maximum(root->left);
-    int rightMin = minimum(root->left);
-
-    bool output = (root->data > leftMax) && (root->data <= rightMin) && isBST(root->left) && isBST(root->right);
-    return output;
+    if(root->data < min || root->data > max){
+        return false;
+    }
+    bool isleftok = isBST3(root->left, min, root->data-1);
+    bool isrightok = isBST3(root->right, root->data-1, max);
+    return isleftok && isrightok;
 }
- */
+
+BinarySearchTreeNode<int> * makeBSTFromArray(int arr[], int si , int ei){
+    if(si>ei){
+        return NULL;
+    }
+    int mid = (si + ei) / 2;
+    BinarySearchTreeNode<int> *root=new BinarySearchTreeNode<int>(arr[mid]);
+    root->left = makeBSTFromArray(arr, si, mid - 1);
+    root->right = makeBSTFromArray(arr, mid + 1, ei);
+    return root;
+}
+
+
+vector<int> ll;
+void BSTtoSortedVector(BinarySearchTreeNode<int> *root){
+    if(root==NULL){
+        return;
+    }
+    BSTtoSortedVector(root->left);
+    ll.push_back(root->data);
+    BSTtoSortedVector(root->right);
+}
+
+vector<int>* getRootToNodePath(BinarySearchTreeNode<int> *root, int data){
+    if(root==NULL){
+        return NULL;
+    }
+    if(root->data==data){
+        vector<int> *output = new vector<int>();
+        output->push_back(root->data);
+        return output;
+    }
+    vector<int> *leftOutput = getRootToNodePath(root->left, data);
+    if(leftOutput!=NULL){
+        leftOutput->push_back(root->data);
+        return leftOutput;
+    }
+
+    vector<int> *rightOutput = getRootToNodePath(root->right, data);
+    if(rightOutput!=NULL){
+        rightOutput->push_back(root->data);
+        return rightOutput;
+    }
+    else
+    {
+        return NULL;
+    }
+}
+
 int main() {
     // 5 3 2 -1 -1 4 -1 -1 7 6 -1 -1 8 -1 -1
-    BinarySearchTreeNode<int> *root = takeInput();
+    // BinarySearchTreeNode<int> *root = takeInput();
     /* 
     cout << endl;
     printTreeLevelWise(root);
     */
+   
     /* 
     int searchData;
     cin >> searchData;
@@ -172,12 +205,36 @@ int main() {
     }else {
         cout << "Not found";
     }
-     */
-    //1:15
+    */
+
+    /* 
     cout << endl;
-    // 4 2 1 -1 -1 13 -1 -1 6 5 -1 -1 7 -1 -1
+    // 4 2 1 -1 -1 3 -1 -1 6 5 -1 -1 7 -1 -1
     printTreeLevelWise(root);
     cout << endl;
     IsBSTReturn opt = isBST2(root);
-    cout << opt.isBST << endl;
+    cout << opt.isBST << endl; 
+    */
+
+    // cout<<isBST3(root);
+
+    //make bst of a sorted numbers
+     
+
+    int arr[7] = {1, 2, 3, 4, 5, 6, 7};
+    BinarySearchTreeNode<int> *root = makeBSTFromArray(arr, 0, 6);
+    // printTreeLevelWise(root);
+    
+    // BSTtoSortedVector(root);
+    // for(int x: ll){
+    //     cout << x << " ";
+    // }
+
+    vector<int> *path=getRootToNodePath(root, 7);
+    for (int i = 0; i < path->size();i++){
+        cout << path->at(i) << endl;
+    }
+
+    //2,47
+    delete root;
 }
