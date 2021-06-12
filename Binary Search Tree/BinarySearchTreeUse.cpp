@@ -234,7 +234,7 @@ int main() {
     for (int i = 0; i < path->size();i++){
         cout << path->at(i) << endl;
     }
-
+    //! deletion in BST do it yourself
     //2,47
     delete root;
 }
