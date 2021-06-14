@@ -1,6 +1,11 @@
-*
-!*/
+#ignore everything.
+* 
+#don't ignore directory.
+!*/ 
+#don't ignore file which have .(dot) in it.
 !*.*
 *.exe
 .vscode
 *.out
+
+c.txt
