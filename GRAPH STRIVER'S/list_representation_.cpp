@@ -2,6 +2,7 @@
 using namespace std;
 
 int main() {
+    freopen("./input.txt", "r", stdin);
     int n, m;
     cin >> n >> m;
     vector<vector<int>> adj(n+1);

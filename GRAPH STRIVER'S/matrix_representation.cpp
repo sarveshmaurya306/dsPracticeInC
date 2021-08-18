@@ -2,6 +2,7 @@
 using namespace std;
 
 int main() {
+    freopen("./input.txt", "r", stdin);
     int n, m; //n -> nodes, m-> edges
     cin >> n >> m;
 
