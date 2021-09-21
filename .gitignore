@@ -9,4 +9,6 @@
 *.out
 input.txt
 output.txt
+cur.txt
 c.txt
+todo.*
