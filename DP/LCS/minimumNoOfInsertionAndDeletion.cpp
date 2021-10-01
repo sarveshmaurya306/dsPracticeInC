@@ -25,5 +25,8 @@ int LCSDP(string a, string b, int m, int n){
 int main() {
         string a, b ;
         cin >> a >> b;
-        cout << LCSDP(a, b, a.length(), b.length()) << endl;
+        int lcscnt = LCSDP(a, b, a.length(), b.length());
+        int insertion = a.length() - lcscnt;
+        int deletion = b.length() - lcscnt;
+        cout << insertion << " " << deletion << endl;
 }

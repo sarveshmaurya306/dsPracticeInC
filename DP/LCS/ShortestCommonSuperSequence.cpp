@@ -25,5 +25,8 @@ int LCSDP(string a, string b, int m, int n){
 int main() {
         string a, b ;
         cin >> a >> b;
-        cout << LCSDP(a, b, a.length(), b.length()) << endl;
+        int totalLength = a.size() + b.size();
+        int lcsLenght = LCSDP(a, b, a.length(), b.length());
+        int lengthOfSuperSequence = totalLength - lcsLenght;
+        cout << lengthOfSuperSequence << endl;
 }
