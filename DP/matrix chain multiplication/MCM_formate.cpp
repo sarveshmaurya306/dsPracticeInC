@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+/* #include<bits/stdc++.h>
 using namespace std;
 
 int mcm(int *arr, int i, int j){
@@ -14,4 +14,4 @@ int mcm(int *arr, int i, int j){
 int main() {
         int arr[] = {20, 3, 9, 20};
         cout<<mcm(arr, 0, sizeof(arr) / sizeof(arr[0]));
-}
+} */
