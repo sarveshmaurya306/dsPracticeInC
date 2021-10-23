@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
- int minccost(vector<int> & cost, int ind, unordered_map< int, int > indCost){
+ int minccost(vector<int> & cost, int ind, unordered_map< int, int >& indCost){
         if(ind>=cost.size())
             return 0;
 
@@ -13,6 +13,7 @@ using namespace std;
 	}
 
         int oneCost= minccost(cost, ind+1, indCost)+ cost[ind]; 
+	cout<<indCost[ind]<<endl;
         int twoCost = minccost(cost, ind+2, indCost) + cost[ind];
 	return indCost[ind]=min(oneCost, twoCost);
 }
