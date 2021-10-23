@@ -1,63 +1,52 @@
-#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
 
-void mergesort(int[], int, int);
-void merge(int[], int, int, int);
+void merge(int arr[], int left, int mid, int right){
+    
+    int len1 = mid - left + 1;
+    int len2 = right - mid;
 
-int main()
-{
-    int arr[5] = {3, 2, 1, 5, 4};
-    mergesort(arr, 0, 4);
-    for (auto el : arr)
-    {
-        std::cout << el << std::endl;
+    int arr1[len1], arr2[len2];
+
+    for(int i=0;i<len1;i++){
+        arr1[i] = arr[left+i];
+    }
+    for(int j=0;j<len2;j++){
+        arr2[j] = arr[mid + 1 + j];
+    }
+
+    int i = 0, j = 0, k = left;
+
+    while(i<len1 && j<len2){
+        if(arr1[i]<=arr2[j]){
+            arr[k++] = arr1[i++];
+        }else if(arr2[j]<arr1[i]){
+            arr[k++] = arr2[j++];
+        }
+    }
+    while(i<len1){
+        arr[k++] = arr1[i++];
+    }
+    while(j<len2){
+        arr[k++] = arr2[j++];
     }
 }
 
-void mergesort(int arr[], int s, int e)
-{
-    if (s < e)
-    {
-        int mid = (s + e) / 2;
-        mergesort(arr, s, mid);
-        mergesort(arr, mid + 1, e);
-        merge(arr, s, mid, e);
+void mergesort(int arr[], int left, int right){
+    if(left>=right){
+        return;
     }
+    
+    int mid = (left + right) / 2;
+    mergesort(arr, left, mid);
+    mergesort(arr, mid+1, right);
+    merge(arr, left, mid, right);
 }
 
-void merge(int arr[], int s, int mid, int e)
-{
-    int i = s;
-    int j = mid + 1;
-    int k = 0;
-
-    int temp[e - s + 1];
-
-    while (i <= mid && j <= e)
-    {
-        if (arr[i] <= arr[j])
-        {
-            temp[k] = arr[i];
-            i++;
-        }
-        else
-        {
-            temp[k] = arr[j];
-            j++;
-        }
-        k++;
-    }
-    while (i <= mid)
-    {
-        temp[k++] = arr[i++];
-    }
-
-    while (j <= e)
-    {
-        temp[k++] = arr[j++];
-    }
-
-    for (i = s, k = 0; i <= e; i++, k++)
-    {
-        arr[i] = temp[k];
+int main() {
+    int arr[] = {212,21,4,6,9,19,39};
+    mergesort(arr, 0, 6);
+    for (int i = 0; i < 7;i++){
+        cout << arr[i] << " ";
     }
 }
