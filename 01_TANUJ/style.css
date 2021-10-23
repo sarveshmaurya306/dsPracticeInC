@@ -1,81 +1,40 @@
-* {
-    margin: 0;
-    padding: 0;
+body{
+    background-color:#b4f2e1;
+    padding: 10px;
 }
 
-.clock {
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    border: 20px solid #b06a26;
-    border-radius: 50%;
-    left: 50%;
-    top: 50%;
-    background: #fefbf2;
-    transform: translate(-50%, -50%);
-    box-shadow: inset 0px 0px 10px black;
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
 }
-
-.clock::before {
-    position: absolute;
-    content: '';
-    height: 130px;
-    width: 10px;
-    background: black;
-    top: 50%;
-    left: calc(50% - 5px);
-    border-radius: 5px;
-    animation: spin 6s linear infinite;
-    transform-origin: top;
+table{
+    border: 1px solid black;
+    padding: 8px;
+    background-color:teal;
 }
-
-.clock::after {
-    position: absolute;
-    content: '';
+.check{
+    background-color:green;
+}
+.cols{
     height: 100px;
-    width: 10px;
-    background: black;
-    top: 50%;
-    left: calc(50% - 5px);
-    border-radius: 5px;
-    animation: spin 72s linear infinite;
-    transform-origin: top;
-    
+    width: 250px; 
+    border: 1px solid black;
+    border-radius: 4px;
 }
-
-@keyframes spin {
-    0% {
-        transform: rotate(-180deg)
-    }
-    100% {
-        transform: rotate(180deg)
-    }
+.cols:hover{
+    background-color:rgb(238, 88, 88);
 }
-
-body::before {
-    content: '';
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #b06a26;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-
-}
-
-body::after {
-    content: '';
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: black;
-    left: 50%;
-    top: calc(50% - 145px);
-    z-index: 2;
-    transform: translateX(-50%);
-    box-shadow: 140px 145px 0 0 black, -140px 145px 0 0 black, 0 280px 0 0 black;
+.seat{
+    display: flex;
+    border: 2px solid black;
+    justify-content: space-around;
+    align-items: center;
+    width:400px;
+    margin: auto;
+    top: 50px;
+    color: white;
+    background-color: #e4a137;
+    border-radius: 10px;
 }
