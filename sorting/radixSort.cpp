@@ -6,15 +6,16 @@ void display(int *arr, int size){
 		cout << arr[i] << " ";
 	cout << endl;
 }
+
 void countingSort(int *arr, int size, int dec, int sift){
 	int cnt[10];
 	memset(cnt, 0, sizeof(cnt));
 
 	for (int i = 0; i < size; i++){
 		int temp = arr[i];
-		if (sift != 0){
+		if (sift != 0)
 			temp /= sift;
-		}
+
 		cnt[temp % dec]++;
 	}
 
