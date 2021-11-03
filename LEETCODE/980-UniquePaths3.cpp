@@ -19,14 +19,6 @@ bool isAllVisited(vector<vector<int>>& visited){
 
 int solve(vector<vector<int>>& grid, vector<vector<int>>& visited, pair<int, int>& end, int i, int j){
 	//base condition
-	cout<<i<<" "<<j<<" yo endl "<<endl;
-	f(i,0,grid.size()){
-		f(j,0, grid[0].size()){
-			cout<<visited[i][j]<<" ";
-		}
-		cout<<endl;
-	}
-	cout<<endl;
 	if(i<0 || j<0 || i>=grid.size() || j>=grid[0].size() || visited[i][j]==-1){
 		return 0;
 	}
@@ -69,7 +61,6 @@ int uniquePathsIII(vector<vector<int>>& grid) {
 			}
 		}
 	}
-	//cout<<start.first<<" "<<start.second<<endl;
 	
 	return solve(grid, visited, end, start.first, start.second);
 }
@@ -88,3 +79,17 @@ int main() {
 	}
 	cout<<uniquePathsIII(grid);
 }
+
+/*
+logic is simple 
+
+step 1: find where to start and where to end
+step 2: maintain a visited array so that we keep track of visited indexes, obstacles is -1
+step 3: start from start(step1 variable) 
+step 4: go to all direction in currenct index ie., left, right, top, bottom; if not visited
+step 5: if visited that current index then simply return from there with ans 0; alreay visited
+step 6: if current index is not visited and it's on the end(step1 variable) implies we have reached our end index so return;' 1 means 1 path found.
+step 7: keep repeating from step 4 to step 6
+step 8: stop either we found a valid path or grid overflow
+step 9: sum of all direction is our ans;
+*/
