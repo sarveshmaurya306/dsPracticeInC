@@ -57,6 +57,16 @@ int diameterOfBinaryTree(Node<int>* root) {
 }
 //diameter of a tree ends here
 
+//L-18
+int maxPathSum(Node<int> * root){
+	if(root==nullptr)	return 0;
+	int leftSum = maxPathSum(root->left);
+	int rightSum = maxPathSum(root->right);
+	return root->val+ max(leftSum, rightSum);
+}
+
+//l-19 check two trees are equal or not
+//just do any traversal ie., inorder/preorder/postorder
 
 int main() {
 	Node<int> * root= new Node<int>(9);
