@@ -8,30 +8,31 @@ void display(int* arr, int lo, int hi){
 }
 //? important to see this partition
 int partition(int *arr, int lo, int hi){
-        //place firtst element on its right place
-        //and return its index;
-        int pivot = arr[lo];
-        int p1 = lo + 1;
-        for(int i=lo+1;i<=hi;i++){
-                if(arr[i]<pivot){
-                        if(i!=p1){
-                                swap(arr[p1], arr[i]);
-                        } 
-                        p1++;
-                }       
-        }
+	//place firtst element on its right place
+	int pivot=arr[lo];
 
-        arr[lo]=arr[p1-1];
-        arr[p1-1]=pivot;
+	int i=lo;
+	int j=hi;
+	while(i<j){
+		do{
+			i++;
+		}while(arr[i]<=pivot); //smaller element skip
 
-        return p1-1;
+		do{
+			j--;
+		}while(arr[j]>pivot); // greater element skip
+		if(i<j) //not to swap when i crosses j
+			swap(arr[i], arr[j]);
+	}
+	swap(arr[lo], arr[j]); // j will point to smaller ele than pivot
+	return j;
 }
 
 void quickSort(int *arr, int lo, int hi){
         if(lo<hi){
-                int pivotIndex = partition(arr, lo, hi);
-                quickSort(arr, lo, pivotIndex - 1); //first small part
-                quickSort(arr, pivotIndex + 1, hi); //second small part
+			int pivotIndex = partition(arr, lo, hi);
+			quickSort(arr, lo, pivotIndex - 1); //first small part
+			quickSort(arr, pivotIndex + 1, hi); //second small part
         }
 }
 
