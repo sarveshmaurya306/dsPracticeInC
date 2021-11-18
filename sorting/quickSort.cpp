@@ -8,24 +8,24 @@ void display(int* arr, int lo, int hi){
 }
 //? important to see this partition
 int partition(int *arr, int lo, int hi){
-	//place firtst element on its right place
-	int pivot=arr[lo];
-
-	int i=lo;
-	int j=hi;
-	while(i<j){
-		do{
-			i++;
-		}while(arr[i]<=pivot); //smaller element skip
-
-		do{
-			j--;
-		}while(arr[j]>pivot); // greater element skip
-		if(i<j) //not to swap when i crosses j
-			swap(arr[i], arr[j]);
+	int pivot = arr[lo], 
+		leftptr = lo, 
+		rightptr = hi+1;
+	while (leftptr < rightptr) {
+		do {
+			leftptr++;
+		} while (arr[leftptr] <= pivot); 
+		//smaller element skip
+		do {
+			rightptr--;
+		} while (arr[rightptr] > pivot); 
+		// greater element skip
+		if (leftptr < rightptr) //not to swap when l>r
+			swap(arr[leftptr], arr[rightptr]);
 	}
-	swap(arr[lo], arr[j]); // j will point to smaller ele than pivot
-	return j;
+	swap(arr[lo], arr[rightptr]); 
+	// rightptr point pivot index;
+	return rightptr;
 }
 
 void quickSort(int *arr, int lo, int hi){
@@ -38,16 +38,18 @@ void quickSort(int *arr, int lo, int hi){
 
 int main() {
         freopen("input.txt", "r", stdin);
-        int size;
-        cin >> size;
+        int size; cin >> size;
         int arr[size];
         for (int i = 0; i < size;i++)
                 cin >> arr[i];
         //input done
         int low = 0;
         int high = size;
-        quickSort(arr, low, high);
+		cout<<"before quick sort"<<endl;
+		display(arr, 0, high);
 
-        //print
+        quickSort(arr, low, high);
+		
+        cout<<"after quick sort"<<endl;
         display(arr, 0, high);
 }
