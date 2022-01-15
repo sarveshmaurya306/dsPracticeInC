@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-void shortest_dis(vector<vector<int>> adj, int src){
+void shortest_dis(vector<vector<int>> &adj, int src){
 	int n= adj.size();
 
 	vector<int> dis(n, INT_MAX);
