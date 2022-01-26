@@ -12,5 +12,6 @@ input.txt
 output.txt
 cur.txt
 c.txt
+tmp.*
 todo.*
 tempCodeRunnerFile.cpp
