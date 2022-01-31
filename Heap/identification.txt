@@ -1,0 +1,8 @@
+identification 
+1) k (+) 2) smallest / largest
+
+k+smallest -> max heap
+k+largest -> min heap
+
+all heap question can be solved using sorting with O(NlogN) TC;
+but if we use heap for this we can do this in O(NlogK) TC;
