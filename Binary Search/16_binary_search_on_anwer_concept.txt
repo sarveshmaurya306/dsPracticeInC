@@ -1,0 +1,9 @@
+esme apn log criteria develope krte ans nikalne ke liye
+
+agr ans nhi niklta to kuch range ko unanswered declared krke
+
+and agr ans milta to ko us side move kr jate
+
+unsorted array pe bhi lg jata
+
+question no -> 17(peak element is the example of this)
