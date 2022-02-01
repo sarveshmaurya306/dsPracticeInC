@@ -1,0 +1,5 @@
+for binary search array must(not necessary) be sorted;
+
+
+binary search can also be applied to unsorted array depends 
+when we want to select or not select in a range( binary search in range)

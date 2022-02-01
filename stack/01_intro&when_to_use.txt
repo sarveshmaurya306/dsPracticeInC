@@ -1,0 +1,11 @@
+when there is two loops 
+
+but  the inner loop is dependent on upper loop
+
+
+eg.,
+for(int i=0;i<n;i++){
+	for(int j=i;j>=0; j--){
+
+	}
+}
